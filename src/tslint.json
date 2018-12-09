@@ -1,4 +1,4 @@
-{
+ng serve{
     "extends": "../tslint.json",
     "rules": {
         "directive-selector": [
