@@ -1,0 +1,93 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact">
+    <div class="form-group">
+      <label for="firstName">first name</label>
+      <input
+        required minlength="3"
+        maxlength="5"
+        pattern="Hedi"
+        ngModel
+        name="firstName"
+        id="firstName"
+        type="text"
+        class="form-control"
+        #firstName="ngModel"
+        (change)="log(firstName)">
+      <div *ngIf="firstName.touched && firstName.errors"
+           class="alert alert-danger">
+        <div *ngIf="firstName.errors?.required">
+          first name is required!
+        </div>
+        <div *ngIf="firstName.errors?.minlength">
+          min length is {{firstName.errors.minlength.requiredLength}}
+        </div>
+        <div *ngIf="firstName.errors?.pattern">
+          enter Hedi :)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">comment</label>
+    <textarea
+      ngModel
+      name="comment"
+      id="comment"
+      cols="30"
+      rows="10"
+      class="form-control">
+    </textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Send Email :
+      <input ngModel name="sendEmail" type="checkbox">
+    </label>
+  </div>
+
+  <div class="from-group">
+    <label for="select">options :</label>
+    <select ngModel class="form-control" name="select" id="select">
+      <option *ngFor="let option of options" [value]="option.id">
+        {{option.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="radio-group">
+    <label *ngFor="let o of options" class="radio-inline">
+     {{o.id}}
+      <input type="radio" name="optradio">{{o.name}}
+    </label>
+  </div>
+
+
+  <div class="radio-group">
+    <label *ngFor="let o of options" class="radio-inline">
+      <input ngModel type="radio" name="radio">{{o.name}}
+    </label>
+  </div>
+  <!--<label class="radio-inline">-->
+  <!--<input type="radio" name="optradio">Option 2-->
+  <!--</label>-->
+  <!--<label class="radio-inline">-->
+  <!--<input type="radio" name="optradio">Option 3-->
+  <!--</label>-->
+  <!--<div class="radio-inline">-->
+  <!--<label *ngFor="let o of options" class="radio">-->
+  <!--<input ngModel type="radio" name="radio">{{o.name}}-->
+  <!--</label>-->
+  <!--</div>-->
+  <!--<div class="radio">-->
+  <!--<label for="contact">-->
+  <!--<input *ngFor="let option of options" type="radio" id="contact" name="contact" [value]="option.id">-->
+  <!--{{option.name}}-->
+  <!--</label>-->
+  <!--</div>-->
+
+  <p>{{f.value | json}} </p>
+  <button class="btn btn-primary" [class.disabled]="!f.valid" (click)="check(f)">
+    submit
+  </button>
+</form>

@@ -1,0 +1,48 @@
+
+<div class="col-sm-2">
+  Layout :
+  <div class="btn-group">
+    <button class="btn btn-default btn-sm" (click)="reportViewModeChange(viewModeEnum.list)"
+            [ngClass]="{'active':mode==viewModeEnum.list}">
+      <i class="glyphicon glyphicon-th-list"></i>
+    </button>
+    <button class="btn btn-default btn-sm" (click)="reportViewModeChange(viewModeEnum.thumbnail)"
+            [ngClass]="{'active':mode==viewModeEnum.thumbnail}">
+      <i class="glyphicon glyphicon-th-large"></i>
+    </button>
+  </div>
+</div>
+
+<div class="col-sm-2">
+  Sort by Name:
+  <div class="btn-group">
+    <button class="btn btn-default btn-sm" (click)="reportSortModeChange(sortModeEnum.ascending)"
+            [ngClass]="{'active':sortMode==sortModeEnum.ascending}">
+      <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+    </button>
+    <button class="btn btn-default btn-sm active" (click)="reportSortModeChange(sortModeEnum.descending)"
+            [ngClass]="{'active': sortMode==sortModeEnum.descending}">
+      <i class="glyphicon glyphicon-sort-by-alphabet-alt"></i>
+    </button>
+  </div>
+</div>
+
+
+<div class="col-sm-2">
+  Sort by Price:
+  <div class="btn-group">
+    <button class="btn btn-default btn-sm" (click)="reportSortPriceChange(sortModeEnum.ascending)"
+            [ngClass]="{'active':sortModePrice==sortModeEnum.ascending}">
+      <i class="glyphicon glyphicon-sort-by-order"></i>
+    </button>
+    <button class="btn btn-default btn-sm active" (click)="reportSortPriceChange(sortModeEnum.descending)"
+            [ngClass]="{'active':sortModePrice==sortModeEnum.descending}">
+      <i class="glyphicon glyphicon-sort-by-order-alt"></i>
+    </button>
+  </div>
+</div>
+
+
+<div class="col-sm-6">
+  <input type="search" placeholder="Search... " class="form-control" [(ngModel)]="query" (keyup)="reportChangeQuery()">
+</div>

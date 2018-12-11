@@ -1,0 +1,13 @@
+<!--|sortProductsByName:sortMode|sortProductsByPrice:sortModePrice|searchProduct:query-->
+<div
+  *ngFor="let product of  productOptionChild.product|
+                         fusejs:productOptionChild.query:{minSearchTermLength:1,keys: ['name','price']}|
+                         sortProductsByPrice:productOptionChild.sortOrderPrice|
+                         sortProductsByName:productOptionChild.sortOrder"
+  class="product">
+  <img src={{product.imageUrl}}>
+  <h1>{{product.name}}</h1>
+  <h4>{{product.price|addSign:'$'}}</h4>
+  <button (click)="reportAddToCart(product)" class="btn btn-default">Add to cart
+    <i class="glyphicon glyphicon-shopping-cart"></i></button>
+</div>

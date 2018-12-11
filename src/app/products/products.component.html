@@ -1,0 +1,44 @@
+<app-info></app-info>
+<div class="container">
+  <div class="row">
+    <app-products-toolbar
+      (changeViewMode)="updateViewMode($event)"
+      (changeSortMode)="updateSortMode($event)"
+      (changeSortModePrice)="updateSortPrice($event)"
+      (changeQuery)="updateQuery($event)">
+    </app-products-toolbar>
+  </div>
+</div>
+
+
+<hr>
+<br><br><br>
+
+<app-products-list *ngIf="productOption.viewMode== viewModeEnum.list"
+                   [productOptionChild]="productOption"
+                   [query]="query"
+                   [sortOrder]="sortModePrice"
+                   [sortByName]="sortMode"
+                   (addToCartChild)="addToCart($event)"
+>
+</app-products-list>
+
+
+<app-products-thumbnails *ngIf="productOption.viewMode== viewModeEnum.thumbnail"
+                         [productOptionChild]="productOption"
+                         [query]="query"
+                         [sortOrder]="sortModePrice"
+                         [sortByName]="sortMode"
+                         (addToCartChild)="addToCart($event)"
+>
+</app-products-thumbnails>
+
+
+<hr>
+
+<app-shopping-cart *ngIf="ShoppingCart.length"
+                   [shoppingCartItems]="ShoppingCart"
+                   (removeItem)="RemoveItemFormCart($event)">
+</app-shopping-cart>
+
+
